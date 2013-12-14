@@ -153,7 +153,7 @@ temp.mkdir('deploy', function(err, newCodeDir) {
       var cmd = path.join(codeDir, script);
       var logfilePath = path.join(process.env['HOME'], 'var', 'log', path.basename(script) + '.log');
       console.log(">> " + script + " logs at " + logfilePath);
-      commands.push([ 'start ' + script, 'forever -a -l ' + logfilePath + ' start ' + cmd]);
+      commands.push([ 'start ' + script, 'forever -a -l ' + logfilePath + ' --sourceDir ' + codeDir + ' start ' + cmd]);
       runNextCommand(function(err) {
         delete process.env['PORT'];
         startNextServer(cb);
